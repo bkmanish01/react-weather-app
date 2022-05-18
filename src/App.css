@@ -1,20 +1,28 @@
 .App {
-  background: url("./images/weather_bg.jpg");
+  background: url("./images/GettyImages.webp");
   background-repeat:no-repeat;
   background-size: cover;
   height: 110vh;
+  width: 101%;
+  /* background-color: #b3e5fc; */
 }
 
-.App h1 {
-  background-color: #000000;
-  color: white;
-  padding: 30px 40px;
-  font-weight: bold;
-  text-decoration: underline;
-}
+.sticky-header {
+  background-color: #000;
+  color: #fff;
+  width:100%;
+  position: fixed; 
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 10px;
+  text-align:left;
+  letter-spacing: 3px;
+ }
 
 .weather {
   text-align: center;
+  padding-top: 130px;
 }
 
 .userInput {
@@ -22,6 +30,8 @@
   width: 13%;
   border: none;
   border-radius: 10px;
+  outline: none;
+  text-indent:20px;
 }
 
 .search-btn {
@@ -30,36 +40,60 @@
   border: none;
   border-radius: 10px;
   margin-left: 3px;
-  background: #f44336;
+  background: green;
   color: white;
 }
 
 .weather-result {
   width: 25%;
-  height: 60vh;
+  height: 45vh;
+  margin: auto;
   margin-top: 40px;
-  padding-top: 10px;
-  margin-left: 710px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center; 
-  align-items: center;
+  padding-top: 35px;
+  display: block;
+  overflow: hidden;
   border-radius: 20px;
-  -webkit-box-shadow: -1px 9px 22px 14px #395FB3; 
-  box-shadow: -1px 9px 22px 14px #395FB3;
+  /* box-shadow: -1px 9px 22px 14px #395FB3; */
+  box-shadow: -1px -9px 22px 14px #000000;
 }
 
 .weather-result img {
-  margin-top: -130px;
-  width: 75%;
+  width: 50%;
+  margin: auto;
+  display: block;
+  margin-top: -80px;
 }
 
 
 .detail {
-  margin-top: -60px;
+  margin-top: -55px;
   font-size: 1.2rem;
+  text-align: center;
 }
 
 .weather-result p {
   color: blue;
 }
+
+.weekly-result div {
+  width: 13%;
+  height: 20vh;
+  margin-top: 40px;
+  margin-left: 20px;
+  display: block;
+  overflow: hidden;
+  float: left;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: -1px 9px 22px 14px #000000;
+}
+
+.weekly-result div p {
+  /* margin-top: 150px; */
+  line-height: 0.8;
+  font-weight: bold;
+}
+
+
+
+

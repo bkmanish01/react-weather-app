@@ -4,14 +4,14 @@ import axios from 'axios';
 
 
 
-
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather?";
-const apiKey = "your api key";
+const apiKey = "a63dd89dbd82af619f2ced501072bf07";
+const iconUrl = "http://openweathermap.org/img/wn/";
 
 const Weather = () => {
 
-    const [data, setData] = useState({});
-    const [userInput, setUserInput] = useState('');
+    const [weather, setWeather] = useState({});
+    const [userInput, setUserInput] = useState('Denver');
 
 
     const fetchWeatherDetail = (cityName) => {
@@ -19,12 +19,14 @@ const Weather = () => {
         axios
             .get(`${baseUrl}q=${cityName}&appid=${apiKey}`)
             .then((res) => {
-                setData(res?.data)
+                setWeather(res?.data)
             })
             .catch((error) => {
                 message.error(error)
             })
     }
+
+    console.log(weather)
 
     const handleChangeInput = (event) => {
         event.preventDefault();
@@ -41,27 +43,81 @@ const Weather = () => {
             <input type="text" placeholder="Enter City" className="userInput" value={userInput} onChange={handleChangeInput}/>
             <button type="button" className="search-btn" onClick={handleChange}>Search</button>
         </div>
-        {Object.keys(data).length > 0 &&
+        {Object.keys(weather).length > 0 &&
+            <>
             <div className="weather-result">
-                <img src={`http://openweathermap.org/img/wn/${data?.weather?.map((item) => item.icon)}@2x.png`} alt="weather-icon"></img>
+                <img src={`${iconUrl}${weather?.weather?.map((item) => item.icon)}@2x.png`} alt="weather-icon"></img>
                 <div className="detail">
-                    <h3>{data?.name},&nbsp;&nbsp;{data?.sys?.country}</h3>
+                    <h3>{weather?.name},&nbsp;&nbsp;{weather?.sys?.country}</h3>
                     <h2>
-                        {`${((data?.main?.temp) - 273.15).toFixed(2)}°C`},&nbsp;&nbsp;&nbsp; 
-                        {`${data?.weather?.map((item) => item.main)}`}
+                        {`${((weather?.main?.temp) - 273.15).toFixed(2)}°C`},&nbsp;&nbsp;&nbsp; 
+                        {`${weather?.weather?.map((item) => item.description)}`}
                     </h2>
                     <p>{new Date().toLocaleString()}</p>
                     <h4>
-                        Low/High: {((data?.main?.temp_min) - 273.15).toFixed(2)}/{((data?.main?.temp_max) - 273.15).toFixed(2)},&nbsp;&nbsp;&nbsp;
-                        Humidity: {(data?.main?.humidity)}
+                        Low/High: {((weather?.main?.temp_min) - 273.15).toFixed(2)}/{((weather?.main?.temp_max) - 273.15).toFixed(2)},&nbsp;&nbsp;&nbsp;
+                        Humidity: {(weather?.main?.humidity)}%
                     </h4>
                     <h4>
-                        Sunrise: {new Date(data?.sys?.sunrise * 1000).toLocaleTimeString()},&nbsp;&nbsp;&nbsp;
-                        Sunset: {new Date(data?.sys?.sunset * 1000).toLocaleTimeString()}
+                        Sunrise: {new Date(weather?.sys?.sunrise * 1000).toLocaleTimeString()},&nbsp;&nbsp;&nbsp;
+                        Sunset: {new Date(weather?.sys?.sunset * 1000).toLocaleTimeString()}
                     </h4>
+                    <h4>Wind-speed: {weather?.wind?.speed}</h4>
                 </div>
             </div>
-        }
+            <div className="weekly-result">
+                <div className="sun">
+                    <h2>Sunday</h2>
+                    <p>Icon</p>
+                    <p>80°C,&nbsp;&nbsp;&nbsp;Cloud</p>
+                    <p>Sunrise: 5:45 AM,&nbsp;&nbsp;Sunset: 8:45 PM</p>  
+                    <p>Humidity: 25%</p>
+                </div>
+                <div className="mon">
+                    <h2>Monday</h2>
+                    <p>Icon</p>
+                    <p>80°C,&nbsp;&nbsp;&nbsp;Cloud</p>
+                    <p>Sunrise: 5:45 AM,&nbsp;&nbsp;Sunset: 8:45 PM</p>  
+                    <p>Humidity: 25%</p>
+                </div>
+                <div className="tue">
+                    <h2>Tuesday</h2>
+                    <p>Icon</p>
+                    <p>80°C,&nbsp;&nbsp;&nbsp;Cloud</p>
+                    <p>Sunrise: 5:45 AM,&nbsp;&nbsp;Sunset: 8:45 PM</p>  
+                    <p>Humidity: 25%</p>
+                </div>
+                <div className="wed">
+                    <h2>Wednesday</h2>
+                    <p>Icon</p>
+                    <p>80°C,&nbsp;&nbsp;&nbsp;Cloud</p>
+                    <p>Sunrise: 5:45 AM,&nbsp;&nbsp;Sunset: 8:45 PM</p>  
+                    <p>Humidity: 25%</p>
+                </div>
+                <div className="thus">
+                    <h2>Thursday</h2>
+                    <p>Icon</p>
+                    <p>80°C,&nbsp;&nbsp;&nbsp;Cloud</p>
+                    <p>Sunrise: 5:45 AM,&nbsp;&nbsp;Sunset: 8:45 PM</p>  
+                    <p>Humidity: 25%</p>
+                </div>
+                <div className="fri">
+                    <h2>Friday</h2>
+                    <p>Icon</p>
+                    <p>80°C,&nbsp;&nbsp;&nbsp;Cloud</p>
+                    <p>Sunrise: 5:45 AM,&nbsp;&nbsp;Sunset: 8:45 PM</p>  
+                    <p>Humidity: 25%</p>
+                </div>
+                <div className="sat">
+                    <h2>Saturday</h2>
+                    <p>Icon</p>
+                    <p>80°C,&nbsp;&nbsp;&nbsp;Cloud</p>
+                    <p>Sunrise: 5:45 AM,&nbsp;&nbsp;Sunset: 8:45 PM</p>  
+                    <p>Humidity: 25%</p>
+                </div>
+            </div>
+            </>
+            }
         </>
     );
 };
