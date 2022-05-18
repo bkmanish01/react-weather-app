@@ -5,7 +5,7 @@ import axios from 'axios';
 
 
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather?";
-const apiKey = "a63dd89dbd82af619f2ced501072bf07";
+const apiKey = "api key";
 const iconUrl = "http://openweathermap.org/img/wn/";
 
 const Weather = () => {
