@@ -11,3 +11,9 @@ In the project directory, you can run:
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+### `used openWeathemap api`
+
+### `used axios for data fetch`
+
+### `used ant design for css style`
+

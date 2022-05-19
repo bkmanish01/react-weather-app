@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { message } from 'antd';
 import axios from 'axios';
+import WeeklyWeather from './weeklyWeather';
 
 
 
 const baseUrl = "https://api.openweathermap.org/data/2.5/weather?";
-const apiKey = "a63dd89dbd82af619f2ced501072bf07";
+const apiKey = "your api key";
 const iconUrl = "http://openweathermap.org/img/wn/";
+
 
 const Weather = () => {
 
@@ -25,8 +27,6 @@ const Weather = () => {
                 message.error(error)
             })
     }
-
-    console.log(weather)
 
     const handleChangeInput = (event) => {
         event.preventDefault();
@@ -65,57 +65,7 @@ const Weather = () => {
                     <h4>Wind-speed: {weather?.wind?.speed}</h4>
                 </div>
             </div>
-            <div className="weekly-result">
-                <div className="sun">
-                    <h2>Sunday</h2>
-                    <p>Icon</p>
-                    <p>80°C,&nbsp;&nbsp;&nbsp;Cloud</p>
-                    <p>Sunrise: 5:45 AM,&nbsp;&nbsp;Sunset: 8:45 PM</p>  
-                    <p>Humidity: 25%</p>
-                </div>
-                <div className="mon">
-                    <h2>Monday</h2>
-                    <p>Icon</p>
-                    <p>80°C,&nbsp;&nbsp;&nbsp;Cloud</p>
-                    <p>Sunrise: 5:45 AM,&nbsp;&nbsp;Sunset: 8:45 PM</p>  
-                    <p>Humidity: 25%</p>
-                </div>
-                <div className="tue">
-                    <h2>Tuesday</h2>
-                    <p>Icon</p>
-                    <p>80°C,&nbsp;&nbsp;&nbsp;Cloud</p>
-                    <p>Sunrise: 5:45 AM,&nbsp;&nbsp;Sunset: 8:45 PM</p>  
-                    <p>Humidity: 25%</p>
-                </div>
-                <div className="wed">
-                    <h2>Wednesday</h2>
-                    <p>Icon</p>
-                    <p>80°C,&nbsp;&nbsp;&nbsp;Cloud</p>
-                    <p>Sunrise: 5:45 AM,&nbsp;&nbsp;Sunset: 8:45 PM</p>  
-                    <p>Humidity: 25%</p>
-                </div>
-                <div className="thus">
-                    <h2>Thursday</h2>
-                    <p>Icon</p>
-                    <p>80°C,&nbsp;&nbsp;&nbsp;Cloud</p>
-                    <p>Sunrise: 5:45 AM,&nbsp;&nbsp;Sunset: 8:45 PM</p>  
-                    <p>Humidity: 25%</p>
-                </div>
-                <div className="fri">
-                    <h2>Friday</h2>
-                    <p>Icon</p>
-                    <p>80°C,&nbsp;&nbsp;&nbsp;Cloud</p>
-                    <p>Sunrise: 5:45 AM,&nbsp;&nbsp;Sunset: 8:45 PM</p>  
-                    <p>Humidity: 25%</p>
-                </div>
-                <div className="sat">
-                    <h2>Saturday</h2>
-                    <p>Icon</p>
-                    <p>80°C,&nbsp;&nbsp;&nbsp;Cloud</p>
-                    <p>Sunrise: 5:45 AM,&nbsp;&nbsp;Sunset: 8:45 PM</p>  
-                    <p>Humidity: 25%</p>
-                </div>
-            </div>
+            <WeeklyWeather lat={weather?.coord?.lat} lon={weather?.coord?.lon} />
             </>
             }
         </>
