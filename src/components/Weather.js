@@ -13,7 +13,7 @@ const iconUrl = "http://openweathermap.org/img/wn/";
 const Weather = () => {
 
     const [weather, setWeather] = useState({});
-    const [userInput, setUserInput] = useState('Denver');
+    const [userInput, setUserInput] = useState();
 
 
     const fetchWeatherDetail = (cityName) => {
